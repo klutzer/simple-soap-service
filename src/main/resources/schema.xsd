@@ -1,0 +1,87 @@
+<xs:schema xmlns:tns="http://example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	version="1.0" targetNamespace="http://example.com/">
+	<xs:element name="negate" type="tns:negate" />
+	<xs:element name="negateResponse" type="tns:negateResponse" />
+	<xs:element name="plusOne" type="tns:plusOne" />
+	<xs:element name="plusOneResponse" type="tns:plusOneResponse" />
+	<xs:element name="squareDouble" type="tns:squareDouble" />
+	<xs:element name="squareDoubleResponse" type="tns:squareDoubleResponse" />
+	<xs:element name="squareFloat" type="tns:squareFloat" />
+	<xs:element name="squareFloatResponse" type="tns:squareFloatResponse" />
+	<xs:element name="tomorrow" type="tns:tomorrow" />
+	<xs:element name="tomorrowDate" type="tns:tomorrowDate" />
+	<xs:element name="tomorrowDateResponse" type="tns:tomorrowDateResponse" />
+	<xs:element name="tomorrowResponse" type="tns:tomorrowResponse" />
+	<xs:element name="upper" type="tns:upper" />
+	<xs:element name="upperResponse" type="tns:upperResponse" />
+	<xs:complexType name="squareDouble">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:double" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="squareDoubleResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:double" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrow">
+		<xs:sequence>
+			<xs:element name="givenDateTime" type="xs:dateTime" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrowResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:dateTime" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrowDate">
+		<xs:sequence>
+			<xs:element name="givenDate" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrowDateResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="squareFloat">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:float" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="squareFloatResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:float" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusOne">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusOneResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="upper">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="upperResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="negate">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:boolean" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="negateResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:boolean" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
