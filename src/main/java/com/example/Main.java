@@ -25,17 +25,19 @@ public class Main {
         }
         System.out.println("Iniciando servico...");
         String url = String.format(URL, host, port);
+
+//        Endpoint endpoint = Endpoint.create(new TestServiceImpl());
+//        endpoint.setMetadata(Arrays.asList(getXSDFromResource()));
+//        endpoint.publish(url);
         
-        Endpoint endpoint = Endpoint.create(new TestServiceImpl());
-        endpoint.setMetadata(Arrays.asList(getXSDFromResource()));
-        endpoint.publish(url);
-        
+        Endpoint.publish(url, new TestServiceImpl());
+
         System.out.println("Servico iniciado! WSDL disponivel => " + url + "?wsdl");
         System.out.print("Pressione qualquer tecla para fechar...");
         System.in.read();
         System.exit(0);
     }
-    
+
     private static Source getXSDFromResource() throws IOException {
         URL resource = Main.class.getResource("/schema.xsd");
         String systemId = resource.toExternalForm();
