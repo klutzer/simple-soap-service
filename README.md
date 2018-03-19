@@ -10,3 +10,8 @@ Executando:
 ```sh
 $ java -jar target/SOAPService.jar localhost 9999
 ```
+
+Para executar utilizando HTTPS, passar o parâmetro "-s":
+```sh
+$ java -jar target/SOAPService.jar -s localhost 9999
+```
