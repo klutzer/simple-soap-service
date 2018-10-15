@@ -2,37 +2,72 @@ package com.example;
 
 import java.util.Date;
 
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @SOAPBinding(style = Style.DOCUMENT)
 @WebService
 public interface TestService {
 
-    @WebMethod
-    public Double squareDouble(Double number);
+	@WebMethod
+	public Double squareDouble(Double number);
 
-    @WebMethod
-    public Float squareFloat(Float number);
+	@WebMethod
+	public Float squareFloat(Float number);
 
-    @WebMethod
-    @XmlJavaTypeAdapter(DateTimeTypeAdapter.class)
-    public Date tomorrow(@WebParam(name = "givenDateTime") @XmlJavaTypeAdapter(DateTimeTypeAdapter.class) Date date);
+	@WebMethod
+	public String upper(@WebParam(name = "string") String str);
 
-    @WebMethod
-    @XmlJavaTypeAdapter(DateTypeAdapter.class)
-    public Date tomorrowDate(@WebParam(name = "givenDate") @XmlJavaTypeAdapter(DateTypeAdapter.class) Date date);
+	@WebMethod
+	public Integer plusOne(@WebParam(name = "n1") Integer number);
 
-    @WebMethod
-    public String upper(String str);
+	@WebMethod
+	public Boolean negate(Boolean b);
 
-    @WebMethod
-    public Integer plusOne(Integer number);
+	@WebMethod
+	@WebResult(name = "customer")
+	public Customer complex(@WebParam(name = "customer") Customer customer);
 
-    @WebMethod
-    public Boolean negate(Boolean b);
+	@WebMethod
+	@WebResult(name = "customer")
+	public Customer complex2(@WebParam(name = "id") Integer id);
+
+	@WebMethod
+	@WebResult(name = "returnedCustomer")
+	public Customer complex3(@WebParam(name = "customer1") Customer c1, @WebParam(name = "customer2") Customer c2);
+
+	@WebMethod
+	@WebResult(name = "product")
+	public Product getProduct(@WebParam(name = "id") Integer id);
+
+	@WebMethod
+	@WebResult(name = "product")
+	public Product getProduct2(@WebParam(name = "product") Product produto);
+
+	@WebMethod
+	public Integer sum(@WebParam(name = "list") String[] list);
+
+	@WebMethod
+	public Date tomorrow(@WebParam(name = "givenDate") Date date);
+
+	@WebMethod
+	public Long plusTwo(@WebParam(name = "n1") Long number, @WebParam(name = "sleepInMinutes") Long sleepInMinutes);
+
+	@WebMethod
+	@WebResult(name = "customerList")
+	public CustomerAgg getSame(@WebParam(name = "customerList") CustomerAgg customer);
+
+	@WebMethod
+	@WebResult(name = "vip")
+	public CustomerVIP getVip(@WebParam(name = "vip") CustomerVIP vips);
+
+	@WebMethod
+	@Oneway
+	public void returnsNothing();
+
 }
