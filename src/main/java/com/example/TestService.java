@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
@@ -65,6 +66,14 @@ public interface TestService {
 	@WebMethod
 	@WebResult(name = "vip")
 	public CustomerVIP getVip(@WebParam(name = "vip") CustomerVIP vips);
+
+	@WebMethod
+	@WebResult(name = "customers")
+	public List<Customer> listAllCustomers();
+
+	@WebMethod
+	@WebResult(name = "customerAgg")
+	public CustomerAgg listAllCustomersAgg();
 
 	@WebMethod
 	@Oneway

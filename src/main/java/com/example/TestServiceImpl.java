@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -148,6 +149,20 @@ public class TestServiceImpl implements TestService {
     @Override
     public CustomerVIP getVip(CustomerVIP vip) {
     	return vip;
+    }
+
+    @Override
+    public List<Customer> listAllCustomers() {
+    	return Arrays.asList(
+    			new Customer(1, "John"), 
+    			new Customer(2, "Peter"));
+    }
+
+    @Override
+    public CustomerAgg listAllCustomersAgg() {
+    	CustomerAgg agg = new CustomerAgg();
+    	agg.setCustomers(listAllCustomers());
+    	return agg;
     }
 
 }

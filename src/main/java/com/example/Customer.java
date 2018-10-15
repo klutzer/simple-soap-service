@@ -12,7 +12,15 @@ public class Customer {
 
     private String name;
     
-    public int getId() {
+    public Customer() {
+	}
+
+	public Customer(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	public int getId() {
         return this.id;
     }
 
