@@ -10,8 +10,9 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.jws.soap.SOAPBinding.Use;
 
-@SOAPBinding(style = Style.DOCUMENT)
+@SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)
 @WebService
 public interface TestService {
 
@@ -26,6 +27,12 @@ public interface TestService {
 
 	@WebMethod
 	public Integer plusOne(@WebParam(name = "n1") Integer number);
+
+	@WebMethod
+	public Integer plusNumbers(@WebParam(name = "n1") Integer n1, @WebParam(name = "n2") Integer n2);
+
+	@WebMethod
+	public Integer sum(@WebParam(name = "list") Integer[] list);
 
 	@WebMethod
 	public Boolean negate(Boolean b);
@@ -51,7 +58,7 @@ public interface TestService {
 	public Product getProduct2(@WebParam(name = "product") Product produto);
 
 	@WebMethod
-	public Integer sum(@WebParam(name = "list") String[] list);
+	public Integer countSize(@WebParam(name = "list") String[] list);
 
 	@WebMethod
 	public Date tomorrow(@WebParam(name = "givenDate") Date date);
@@ -69,14 +76,14 @@ public interface TestService {
 
 	@WebMethod
 	@WebResult(name = "customers")
-	public List<Customer> listAllCustomers();
+	public Customer[] listAllCustomers();
 
 	@WebMethod
 	@WebResult(name = "customerAgg")
 	public CustomerAgg listAllCustomersAgg();
 
-	@WebMethod
-	@Oneway
-	public void returnsNothing();
+//	@WebMethod
+//	@Oneway
+//	public void returnsNothing();
 
 }

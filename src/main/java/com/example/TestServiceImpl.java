@@ -10,9 +10,6 @@ import java.util.Map;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.xml.ws.BindingType;
-import javax.xml.ws.http.HTTPBinding;
 
 @WebService(endpointInterface = "com.example.TestService")
 //@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
@@ -73,7 +70,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Integer sum(String[] list) {
+    public Integer countSize(String[] list) {
         if (list != null) {
             System.out.println("List size: " + list.length);
             for (String s : list) {
@@ -130,16 +127,16 @@ public class TestServiceImpl implements TestService {
         return c;
     }
 
-    @Override
-    public void returnsNothing() {
-        System.out.println("Recebido request às " + new Date() + ". Esperando 10s...");
-        try {
-            Thread.sleep(180000);
-            System.out.println("Terminou espera de 10s!");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    public void returnsNothing() {
+//        System.out.println("Recebido request às " + new Date() + ". Esperando 10s...");
+//        try {
+//            Thread.sleep(180000);
+//            System.out.println("Terminou espera de 10s!");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public CustomerAgg getSame(CustomerAgg customer) {
@@ -152,16 +149,26 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<Customer> listAllCustomers() {
+    public Integer plusNumbers(Integer n1, Integer n2) {
+    	return n1 + n2;
+    }
+
+    @Override
+    public Integer sum(Integer[] list) {
+    	return list == null ? null : Arrays.asList(list).stream().mapToInt(v -> v).sum();
+    }
+
+    @Override
+    public Customer[] listAllCustomers() {
     	return Arrays.asList(
     			new Customer(1, "John"), 
-    			new Customer(2, "Peter"));
+    			new Customer(2, "Peter")).toArray(new Customer[0]);
     }
 
     @Override
     public CustomerAgg listAllCustomersAgg() {
     	CustomerAgg agg = new CustomerAgg();
-    	agg.setCustomers(listAllCustomers());
+    	agg.setCustomers(Arrays.asList(listAllCustomers()));
     	return agg;
     }
 
