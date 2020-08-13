@@ -1,11 +1,11 @@
 package com.example;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.jws.WebParam;
@@ -19,7 +19,7 @@ public class TestServiceImpl implements TestService {
     private static Map<Integer, Product> map = new HashMap<Integer, Product>(){{
         put(1, new Product(1, "Farinha", 3.45, true));
         put(2, new Product(2, "Leite", 2.77, true));
-        put(3, new Product(3, "Pão", 1.98, false));
+            put(3, new Product(3, "PÃ£o", 1.98, false));
     }};
     
     @Override
@@ -129,7 +129,7 @@ public class TestServiceImpl implements TestService {
 
 //    @Override
 //    public void returnsNothing() {
-//        System.out.println("Recebido request às " + new Date() + ". Esperando 10s...");
+//        System.out.println("Recebido request ï¿½s " + new Date() + ". Esperando 10s...");
 //        try {
 //            Thread.sleep(180000);
 //            System.out.println("Terminou espera de 10s!");
@@ -170,6 +170,33 @@ public class TestServiceImpl implements TestService {
     	CustomerAgg agg = new CustomerAgg();
     	agg.setCustomers(Arrays.asList(listAllCustomers()));
     	return agg;
+    }
+
+    @Override
+    public String now() {
+    	return LocalDateTime.now().toString();
+    }
+
+    @Override
+    public Date plusDays(Date date, Integer days) {
+        if (date == null) {
+            return null;
+        }
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, days);
+        return calendar.getTime();
+    }
+
+    @Override
+    public Date plusHours(Date date, Integer hours) {
+        if (date == null) {
+            return null;
+        }
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
     }
 
 }
