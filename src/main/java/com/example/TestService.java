@@ -1,5 +1,6 @@
 package com.example;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.jws.WebMethod;
@@ -91,7 +92,7 @@ public interface TestService {
 
     @WebMethod
     @XmlJavaTypeAdapter(DateTypeAdapter.class)
-    public Date plusDays(@WebParam(name = "givenDate") @XmlJavaTypeAdapter(DateTypeAdapter.class) Date date, @WebParam(name = "days") Integer days);
+    public LocalDate plusDays(@WebParam(name = "givenDate") @XmlJavaTypeAdapter(DateTypeAdapter.class) LocalDate date, @WebParam(name = "days") Integer days);
 
     //	@WebMethod
     //	@Oneway

@@ -1,22 +1,21 @@
 package com.example;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class DateTypeAdapter extends XmlAdapter<String, Date> {
+public class DateTypeAdapter extends XmlAdapter<String, LocalDate> {
 
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @Override
-    public Date unmarshal(String v) throws Exception {
-        return dateFormat.parse(v);
+    public LocalDate unmarshal(String v) throws Exception {
+        return LocalDate.parse(v, dateFormat);
     }
 
     @Override
-    public String marshal(Date v) throws Exception {
+    public String marshal(LocalDate v) throws Exception {
         return dateFormat.format(v);
     }
 

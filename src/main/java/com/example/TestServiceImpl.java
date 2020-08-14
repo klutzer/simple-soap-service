@@ -1,5 +1,6 @@
 package com.example;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 @WebService(endpointInterface = "com.example.TestService")
 //@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
@@ -178,14 +180,12 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Date plusDays(Date date, Integer days) {
+    public LocalDate plusDays(LocalDate date, Integer days) {
+        System.out.println("Received " + date + " - " + days);
         if (date == null) {
             return null;
         }
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_MONTH, days);
-        return calendar.getTime();
+        return date.plusDays(days);
     }
 
     @Override

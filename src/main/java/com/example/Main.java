@@ -6,6 +6,7 @@ import java.net.InetSocketAddress;
 import java.net.URL;
 import java.security.KeyStore;
 import java.security.SecureRandom;
+import java.util.Arrays;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -43,6 +44,10 @@ public class Main {
         String url = protocol + "://" + host + ":" + port + URI;
 
         Endpoint endpoint = Endpoint.create(new TestServiceImpl());
+        // Foi usado apenas para forçar o tipo date no xsd, comentar caso adicione novos métodos
+        // e queira gerar o XSD dinamico
+        // URL do xsd: SERVICO:PORTA/ws/test?xsd=1
+        endpoint.setMetadata(Arrays.asList(getXSDFromResource()));
         if (protocol.equals("http")) {
             endpoint.publish(url);
         } else {

@@ -1,19 +1,118 @@
-<xs:schema xmlns:tns="http://example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	version="1.0" targetNamespace="http://example.com/">
+<xs:schema xmlns:tns="http://example.com/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+	targetNamespace="http://example.com/">
+	<xs:element name="complex" type="tns:complex" />
+	<xs:element name="complex2" type="tns:complex2" />
+	<xs:element name="complex2Response"
+		type="tns:complex2Response" />
+	<xs:element name="complex3" type="tns:complex3" />
+	<xs:element name="complex3Response"
+		type="tns:complex3Response" />
+	<xs:element name="complexResponse"
+		type="tns:complexResponse" />
+	<xs:element name="countSize" type="tns:countSize" />
+	<xs:element name="countSizeResponse"
+		type="tns:countSizeResponse" />
+	<xs:element name="customer" type="tns:customer" />
+	<xs:element name="customerAgg" type="tns:Customers" />
+	<xs:element name="customerVIP" type="tns:customerVIP" />
+	<xs:element name="getProduct" type="tns:getProduct" />
+	<xs:element name="getProduct2" type="tns:getProduct2" />
+	<xs:element name="getProduct2Response"
+		type="tns:getProduct2Response" />
+	<xs:element name="getProductResponse"
+		type="tns:getProductResponse" />
+	<xs:element name="getSame" type="tns:getSame" />
+	<xs:element name="getSameResponse"
+		type="tns:getSameResponse" />
+	<xs:element name="getVip" type="tns:getVip" />
+	<xs:element name="getVipResponse" type="tns:getVipResponse" />
+	<xs:element name="listAllCustomers"
+		type="tns:listAllCustomers" />
+	<xs:element name="listAllCustomersAgg"
+		type="tns:listAllCustomersAgg" />
+	<xs:element name="listAllCustomersAggResponse"
+		type="tns:listAllCustomersAggResponse" />
+	<xs:element name="listAllCustomersResponse"
+		type="tns:listAllCustomersResponse" />
 	<xs:element name="negate" type="tns:negate" />
 	<xs:element name="negateResponse" type="tns:negateResponse" />
+	<xs:element name="now" type="tns:now" />
+	<xs:element name="nowResponse" type="tns:nowResponse" />
+	<xs:element name="plusDays" type="tns:plusDays" />
+	<xs:element name="plusDaysResponse"
+		type="tns:plusDaysResponse" />
+	<xs:element name="plusHours" type="tns:plusHours" />
+	<xs:element name="plusHoursResponse"
+		type="tns:plusHoursResponse" />
+	<xs:element name="plusNumbers" type="tns:plusNumbers" />
+	<xs:element name="plusNumbersResponse"
+		type="tns:plusNumbersResponse" />
 	<xs:element name="plusOne" type="tns:plusOne" />
-	<xs:element name="plusOneResponse" type="tns:plusOneResponse" />
+	<xs:element name="plusOneResponse"
+		type="tns:plusOneResponse" />
+	<xs:element name="plusTwo" type="tns:plusTwo" />
+	<xs:element name="plusTwoResponse"
+		type="tns:plusTwoResponse" />
+	<xs:element name="product" type="tns:Product" />
 	<xs:element name="squareDouble" type="tns:squareDouble" />
-	<xs:element name="squareDoubleResponse" type="tns:squareDoubleResponse" />
+	<xs:element name="squareDoubleResponse"
+		type="tns:squareDoubleResponse" />
 	<xs:element name="squareFloat" type="tns:squareFloat" />
-	<xs:element name="squareFloatResponse" type="tns:squareFloatResponse" />
+	<xs:element name="squareFloatResponse"
+		type="tns:squareFloatResponse" />
+	<xs:element name="sum" type="tns:sum" />
+	<xs:element name="sumResponse" type="tns:sumResponse" />
 	<xs:element name="tomorrow" type="tns:tomorrow" />
-	<xs:element name="tomorrowDate" type="tns:tomorrowDate" />
-	<xs:element name="tomorrowDateResponse" type="tns:tomorrowDateResponse" />
-	<xs:element name="tomorrowResponse" type="tns:tomorrowResponse" />
+	<xs:element name="tomorrowResponse"
+		type="tns:tomorrowResponse" />
 	<xs:element name="upper" type="tns:upper" />
 	<xs:element name="upperResponse" type="tns:upperResponse" />
+	<xs:complexType name="plusTwo">
+		<xs:sequence>
+			<xs:element name="n1" type="xs:long" minOccurs="0" />
+			<xs:element name="sleepInMinutes" type="xs:long"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusTwoResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:long" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getSame">
+		<xs:sequence>
+			<xs:element name="customerList" type="tns:Customers"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Customers">
+		<xs:sequence>
+			<xs:element name="customers" type="tns:customer"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="vips" type="tns:customerVIP"
+				nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customer">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customerVIP">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+			<xs:element name="dependent" type="tns:customer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getSameResponse">
+		<xs:sequence>
+			<xs:element name="customerList" type="tns:Customers"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="squareDouble">
 		<xs:sequence>
 			<xs:element name="arg0" type="xs:double" minOccurs="0" />
@@ -24,24 +123,24 @@
 			<xs:element name="return" type="xs:double" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="tomorrow">
+	<xs:complexType name="getProduct2">
 		<xs:sequence>
-			<xs:element name="givenDateTime" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="product" type="tns:Product"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="tomorrowResponse">
+	<xs:complexType name="Product">
 		<xs:sequence>
-			<xs:element name="return" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="name" type="xs:string" minOccurs="0" />
+			<xs:element name="price" type="xs:double" minOccurs="0" />
+			<xs:element name="avail" type="xs:boolean" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="tomorrowDate">
+	<xs:complexType name="getProduct2Response">
 		<xs:sequence>
-			<xs:element name="givenDate" type="xs:date" minOccurs="0" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="tomorrowDateResponse">
-		<xs:sequence>
-			<xs:element name="return" type="xs:date" minOccurs="0" />
+			<xs:element name="product" type="tns:Product"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="squareFloat">
@@ -54,24 +153,36 @@
 			<xs:element name="return" type="xs:float" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="plusOne">
+	<xs:complexType name="plusDays">
 		<xs:sequence>
-			<xs:element name="arg0" type="xs:int" minOccurs="0" />
+			<xs:element name="givenDate" type="xs:date"
+				minOccurs="0" />
+			<xs:element name="days" type="xs:int" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="plusOneResponse">
+	<xs:complexType name="plusDaysResponse">
 		<xs:sequence>
-			<xs:element name="return" type="xs:int" minOccurs="0" />
+			<xs:element name="return" type="xs:date" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="upper">
+	<xs:complexType name="complex">
 		<xs:sequence>
-			<xs:element name="arg0" type="xs:string" minOccurs="0" />
+			<xs:element name="customer" type="tns:customer"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="upperResponse">
+	<xs:complexType name="complexResponse">
 		<xs:sequence>
-			<xs:element name="return" type="xs:string" minOccurs="0" />
+			<xs:element name="customer" type="tns:customer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="now">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="nowResponse">
+		<xs:sequence>
+			<xs:element name="date" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="negate">
@@ -82,6 +193,148 @@
 	<xs:complexType name="negateResponse">
 		<xs:sequence>
 			<xs:element name="return" type="xs:boolean" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sum">
+		<xs:sequence>
+			<xs:element name="list" type="xs:int" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sumResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="listAllCustomers">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="listAllCustomersResponse">
+		<xs:sequence>
+			<xs:element name="customers" type="tns:customer"
+				nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrow">
+		<xs:sequence>
+			<xs:element name="givenDate" type="xs:dateTime"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tomorrowResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:dateTime" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getVip">
+		<xs:sequence>
+			<xs:element name="vip" type="tns:customerVIP"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getVipResponse">
+		<xs:sequence>
+			<xs:element name="vip" type="tns:customerVIP"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getProduct">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getProductResponse">
+		<xs:sequence>
+			<xs:element name="product" type="tns:Product"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusNumbers">
+		<xs:sequence>
+			<xs:element name="n1" type="xs:int" minOccurs="0" />
+			<xs:element name="n2" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusNumbersResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="countSize">
+		<xs:sequence>
+			<xs:element name="list" type="xs:string" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="countSizeResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="listAllCustomersAgg">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="listAllCustomersAggResponse">
+		<xs:sequence>
+			<xs:element name="customerAgg" type="tns:Customers"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="upper">
+		<xs:sequence>
+			<xs:element name="string" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="upperResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusOne">
+		<xs:sequence>
+			<xs:element name="n1" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusOneResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="complex2">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="complex2Response">
+		<xs:sequence>
+			<xs:element name="customer" type="tns:customer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="complex3">
+		<xs:sequence>
+			<xs:element name="customer1" type="tns:customer"
+				minOccurs="0" />
+			<xs:element name="customer2" type="tns:customer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="complex3Response">
+		<xs:sequence>
+			<xs:element name="returnedCustomer" type="tns:customer"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusHours">
+		<xs:sequence>
+			<xs:element name="givenDateTime" type="xs:dateTime"
+				minOccurs="0" />
+			<xs:element name="hours" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="plusHoursResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:dateTime" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
